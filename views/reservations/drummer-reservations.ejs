@@ -1,0 +1,8 @@
+<%- include('header', {title: `Drummers for Hire`}); -%> <%
+reservations.forEach(reservation => { %>
+<p>
+  <%= reservation.id %>
+  <br />
+  <%= reservation.booking_date %>
+</p>
+<% }) %>

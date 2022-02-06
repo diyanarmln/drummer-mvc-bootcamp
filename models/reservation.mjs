@@ -1,34 +1,34 @@
 export default function initReservationModel(sequelize, DataTypes) {
-    return sequelize.define(
-      'reservation',{
-        id: {
-          allowNull: false,
-          autoIncrement: true,
-          primaryKey: true,
-          type: Sequelize.INTEGER,
+  return sequelize.define(
+    'reservation', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      date: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      drummer_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'drummers',
+          key: 'id',
         },
-        date: {
-          allowNull: false,
-          type: Sequelize.DATE,
-        },
-        drummer_id: {
-          type: Sequelize.INTEGER,
-          references: {
-            model: 'drummers',
-            key: 'id',
-          },
-        },
-        created_at: {
-          allowNull: false,
-          type: Sequelize.DATE,
-        },
-        updated_at: {
-          allowNull: false,
-          type: Sequelize.DATE,
-        },
-      });
+      },
+      created_at: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updated_at: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
     },
-    underscored: true,
+    {
+      underscored: true,
     },
-  };
-  
+  );
+}

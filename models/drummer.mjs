@@ -21,9 +21,6 @@ export default function initDrummerModel(sequelize, DataTypes) {
         allowNull: false,
         type: DataTypes.DATE,
       },
-      price: {
-        type: DataTypes.DECIMAL,
-      },
     },
     {
       underscored: true,

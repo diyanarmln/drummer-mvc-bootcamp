@@ -1,8 +1,15 @@
 export default function initDrummersController(db) {
   const findOne = (request, response) => {
-    db.Drummer.findOne()
+    const { id } = request.params;
+    console.log('checking id', id);
+    db.Drummer.findOne({
+      where: {
+        id: `${id}`,
+      },
+    })
       .then((drummers) => {
-        response.render('drummer/show', { drummers });
+        console.log(drummers);
+        response.render('drummer/showOne', { drummers });
       })
       .catch((error) => console.log(error));
   };
