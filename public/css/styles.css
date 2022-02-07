@@ -1,0 +1,8 @@
+body {
+  margin: 100px auto;
+}
+
+.table-borderless td,
+.table-borderless th {
+  border: 0;
+}

@@ -2,9 +2,47 @@
 
 <div
   class="container"
-  style="padding-top: 90px; padding-bottom: 30px; text-align: center"
+  style="padding-bottom: 30px; text-align: center"
 >
   <h1><%= drummers.name.charAt(0).toUpperCase() + drummers.name.slice(1) %></h1>
+</div>
+
+<div class="container">
+  
+    <form name="reserveForm" action="/reservation/<%= drummers.id %>" method="POST">
+      <div
+        class="row"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+        "
+      >
+        <div class="col-auto">
+          <label for="inputReservationDate"></label>
+          <p>
+            <input
+            id="inputReservationDate"
+            type="date"
+            name="inputReservationDate"
+            class="form-control"
+            placeholder=""
+            style="margin-top: -5px"
+            required
+          />
+          </p>
+        </div>
+        <div class="col-auto">
+          <span>
+            <button type="submit" class="btn btn-primary pull-right">
+            Reserve
+          </button>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
 <%- include('../footer'); -%>

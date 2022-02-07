@@ -16,10 +16,9 @@ export default function bindRoutes(app) {
 
   app.get('/drummer/:id', drummersController.findOne);
 
-  // app.get('/reservation/:drummer_id', reservationsController.newForm);
   // app.post('/reservation/:drummer_id', reservationsController.create);
 
   // app.get('/reservations/:drummer_id', reservationsController.index);
 
-  // app.get('/', drummersController.index);
+  app.get('/', drummersController.index);
 }

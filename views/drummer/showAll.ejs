@@ -1,0 +1,24 @@
+<%- include('../header'); -%> <%- include('../navbar'); -%>
+
+<div class="container" style="padding-bottom: 30px; text-align: center">
+  <h1>Drummers for Hire</h1>
+</div>
+
+<div class="container">
+  <table class="table table-borderless" style="text-align: center; border: 0">
+    <tbody>
+      <% drummers.forEach((drummer)=>{ %>
+      <tr>
+        <td>
+          <a href="/drummer/<%= drummer.id %> "
+            ><%= drummer.name.charAt(0).toUpperCase() + drummer.name.slice(1)
+            %></a
+          >
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../footer'); -%>
