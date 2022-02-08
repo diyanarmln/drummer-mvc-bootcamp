@@ -1,32 +1,32 @@
-// import { response } from 'express';
-
 export default function initReservationsController(db) {
-  const newForm = (reqNewForm, resNewForm) => {
-    response.render('reservation-form');
+  const create = (request, response) => {
+    const bookingDate = request.body.inputReservationDate;
+    const { drummer_id } = request.params;
+
+    db.Reservation.create({
+      date: bookingDate,
+      drummer_id,
+      created_at: Date.now(),
+      updated_at: Date.now(),
+    }).then(() => {
+      response.redirect(`/drummer/${drummer_id}`);
+    }).catch((error) => console.log(error));
   };
 
-  //  const create = (req, res) => {
-  //     console.log(req.body);
-  //     db.Reservation.create({
-  //       booking_date: req.body.booking_date,
-  //       drummer_id: req.body.drummer_id,
-  //     })
-  //       .then((reservation) => {
-  //         console.log('reservation', reservation);
-  //         res.send('booking successful');
-  //       })
-  //       .catch((error) => console.log('error', error));
-  //   };
-  //   const findindex= (req, res) => {
-  //     db.Reservation.findAll({
-  //       where: {
-  //         drummer_id: req.params.drummer_id,
-  //       },
-  //     })
-  //       .then((reservations) => {
-  //         res.render('reservations/drummer-reservations', { reservations });
-  //       })
-  //       .catch((error) => console.log('error', error));
+  const index = (request, response) => {
+    const { drummer_id } = request.params;
 
-//     return index;
+    db.Reservation.findAll({
+      where: {
+        drummer_id,
+      },
+    }).then((reservations) => {
+      response.render('reservations/drummer-reservations', { reservations });
+    }).catch((error) => console.log(error));
+  };
+
+  return {
+    create,
+    index,
+  };
 }

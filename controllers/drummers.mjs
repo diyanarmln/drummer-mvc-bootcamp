@@ -17,7 +17,7 @@ export default function initDrummersController(db) {
     db.Drummer.findAll().then((drummers) => {
       console.log(drummers);
       response.render('drummer/showAll', { drummers });
-    });
+    }).catch((error) => console.log(error));
   };
 
   // return all methods we define in an object

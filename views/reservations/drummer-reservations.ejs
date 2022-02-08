@@ -1,8 +1,13 @@
-<%- include('header', {title: `Drummers for Hire`}); -%> <%
-reservations.forEach(reservation => { %>
-<p>
-  <%= reservation.id %>
-  <br />
-  <%= reservation.booking_date %>
-</p>
-<% }) %>
+<%- include('../header'); -%> <%- include('../navbar'); -%>
+
+<div class="container">
+  <% reservations.forEach(reservation => { %>
+  <p>
+    <%= reservation.date %>
+    <br />
+    <%= reservation.created_at %>
+  </p>
+  <% }) %>
+</div>
+
+<%- include('../footer'); -%>
