@@ -15,10 +15,7 @@ export default function bindRoutes(app) {
   // define your route matchers here using app
 
   app.get('/drummer/:id', drummersController.findOne);
-
   app.post('/reservation/:drummer_id', reservationsController.create);
-
   app.get('/reservations/:drummer_id', reservationsController.index);
-
   app.get('/', drummersController.index);
 }

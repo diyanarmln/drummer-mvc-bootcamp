@@ -16,13 +16,20 @@ export default function initReservationsController(db) {
   const index = (request, response) => {
     const { drummer_id } = request.params;
 
-    db.Reservation.findAll({
+    db.Drummer.findOne({
       where: {
-        drummer_id,
+        id: drummer_id,
       },
-    }).then((reservations) => {
-      response.render('reservations/drummer-reservations', { reservations });
-    }).catch((error) => console.log(error));
+    }).then((drummer) => {
+      const drummerName = drummer.name;
+      return db.Reservation.findAll({
+        where: {
+          drummer_id,
+        },
+      }).then((reservations) => {
+        // console.log(reservations[0].drummer);
+        response.render('reservations/drummer-reservations', { reservations, drummerName });
+      }).catch((error) => console.log(error)); });
   };
 
   return {
